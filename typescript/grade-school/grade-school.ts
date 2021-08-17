@@ -15,11 +15,11 @@ class GradeSchool {
   constructor() {}
 
   public studentRoster(): StudentMap {
-    return this.students // 安易にthisを露出してはだめ？？
+    return this.toDeepCloneMap(this.students)
   }
 
   public studentsInGrade(grade: Grade | number): ExtractMap<StudentMap>['value'] {
-    return this.students.get(this.toGrade(grade)) || []
+    return this.toDeepCloneMap(this.students).get(this.toGrade(grade)) || []
   }
 
   public addStudent(student: Student, grade: Grade | number): void {
@@ -33,6 +33,10 @@ class GradeSchool {
     
     this.students.set(this.toGrade(grade), [...existValue, student].sort())
     this.grades.set(student, this.toGrade(grade))
+  }
+
+  private toDeepCloneMap<T extends Map<unknown, unknown>>(map: T): T {
+    return new Map(JSON.parse(JSON.stringify(Array.from(map)))) as T
   }
 
   private deleteDuplicateStudent(student: Student, grade: Grade): void {
