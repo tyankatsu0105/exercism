@@ -18,18 +18,20 @@ class Clock {
 
     if(minute > 0) minute = minute % 60
     if(minute < 0) minute = minute % 60 + 60
+    if(minute === 60) minute = 0
 
     let hour = this.hour
     hour += Math.floor(this.minute / 60)
-
+    
     if(hour > 0) hour = hour % 24
     if(hour < 0) hour = hour % 24 + 24
+    if(hour === 24) hour = 0
 
     return `${this.toFormattedTimeValue(hour)}:${this.toFormattedTimeValue(minute)}` as Time
   }
 
-  public equals(clock: Clock) {
-    return clock
+  public equals(clock: Clock): boolean {
+    return this.toString() === clock.toString()
   }
 
   public plus(minutes: number): Clock {

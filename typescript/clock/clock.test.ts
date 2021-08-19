@@ -78,7 +78,7 @@ describe('Clock', () => {
       expect(new Clock(-121, -5810).toString()).toEqual('22:10')
     })
 
-    describe.skip('Adding and subtracting minutes', () => {
+    describe('Adding and subtracting minutes', () => {
       test('add minutes', () => {
         expect(new Clock(10, 0).plus(3).toString()).toEqual('10:03')
       })
@@ -144,7 +144,7 @@ describe('Clock', () => {
       })
     })
 
-    describe.skip('Construct two separate clocks, set times, test if they are equal', () => {
+    describe('Construct two separate clocks, set times, test if they are equal', () => {
       test('clocks with same time', () => {
         expect(new Clock(15, 37).equals(new Clock(15, 37))).toBeTruthy()
       })
