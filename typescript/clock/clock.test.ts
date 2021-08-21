@@ -1,3 +1,4 @@
+// import Clock from './clock'
 import Clock from './clock'
 
 describe('Clock', () => {
