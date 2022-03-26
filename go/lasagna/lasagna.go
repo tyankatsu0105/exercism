@@ -1,7 +1,10 @@
 package lasagna
 
-// OvenTime is time for using oven.
-var OvenTime int = 40
+const (
+	OvenTime int = 40
+	layerTime int = 2
+)
+
 
 // RemainingOvenTime returns the remaining minutes based on the `actual` minutes already in the oven.
 func RemainingOvenTime(actualMinutesInOven int) int {
@@ -10,13 +13,12 @@ func RemainingOvenTime(actualMinutesInOven int) int {
 
 // PreparationTime calculates the time needed to prepare the lasagna based on the amount of layers.
 func PreparationTime(numberOfLayers int) int {
-	return numberOfLayers * 2
+	return layerTime * numberOfLayers
 }
 
 // ElapsedTime calculates the total time needed to create and bake a lasagna.
 func ElapsedTime(numberOfLayers, actualMinutesInOven int) int {
-	layer := PreparationTime(numberOfLayers)
-	minute := actualMinutesInOven
+	layerTime := PreparationTime(numberOfLayers)
 
-	return layer + minute
+	return layerTime + actualMinutesInOven
 }
