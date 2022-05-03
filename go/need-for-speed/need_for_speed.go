@@ -1,7 +1,5 @@
 package speed
 
-import "math"
-
 // Car is the properties of a car.
 type Car struct {
 	battery      int
@@ -53,11 +51,7 @@ func Drive(car Car) Car {
 
 // CanFinish checks if a car is able to finish a certain track.
 func CanFinish(car Car, track Track) bool {
-	battery := float64(car.battery)
-	distancePerBattery := float64(car.speed) / float64(car.batteryDrain)
-	drivableDistance := math.Floor(distancePerBattery * battery)
+	drivableDistance := (car.battery / car.batteryDrain) * car.speed
 
-	distance := float64(track.distance)
-
-	return drivableDistance >= distance
+	return drivableDistance >= track.distance
 }
