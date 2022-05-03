@@ -3,5 +3,8 @@
   "editor.formatOnSave": true,
   "go.formatTool": "gofmt",
   "go.toolsEnvVars": { "GO111MODULE": "on" },
-  "gopls": { "experimentalWorkspaceModule": true }
+  "gopls": { "experimentalWorkspaceModule": true },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  }
 }
