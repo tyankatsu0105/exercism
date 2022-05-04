@@ -5,6 +5,52 @@ import (
 	"testing"
 )
 
+func TestIsValidIndex(t *testing.T) {
+	type args struct {
+		slice []int
+		index int
+	}
+	tests := []struct {
+		name string
+		args args
+		want bool
+	}{
+		{
+			name: "Index number is existed at slice",
+			args: args{
+				slice: []int{0, 1, 2},
+				index: 0,
+			},
+			want: true,
+		},
+		{
+			name: "Index number is not existed at slice",
+			args: args{
+				slice: []int{0, 1, 2},
+				index: 3,
+			},
+			want: false,
+		},
+		{
+			name: "Negative index",
+			args: args{
+				slice: []int{0, 1, 2},
+				index: -1,
+			},
+			want: false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := IsValidIndex(tt.args.slice, tt.args.index)
+			if got != tt.want {
+				t.Errorf("IsValidIndex(slice:%v, index:%v) got = %v, want %v", tt.args.slice, tt.args.index, got, tt.want)
+			}
+		})
+	}
+
+}
+
 func TestFavoriteCards(t *testing.T) {
 	got := FavoriteCards()
 	want := []int{2, 6, 9}
